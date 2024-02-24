@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 6</h1>
+    <p>З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного товару окремо
+        та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки.</p>
+    <script>
+        //Вводимо необхідні дані
+
+        let productOnePrice = parseInt(prompt('Введіть ціну першого товару ', '0'));
+        let numberProductOne = parseInt(prompt('Введіть кількість першого товару ', '0'));
+        let productTwoPrice = parseInt(prompt('Введіть ціну другого товару ', '0'));
+        let numberProductTwo = parseInt(prompt('Введіть кількість другого товару ', '0'));
+        let productThreePrice = parseInt(prompt('Введіть ціну третього товару ', '0'));
+        let numberProductThree = parseInt(prompt('Введіть кількість третього товару ', '0'));
+
+        //Знаходимо резулбтат
+
+        let totalPriceOne = productOnePrice * numberProductOne;
+        let totalPriceTwo = productTwoPrice * numberProductTwo;
+        let totalPriceThree = productThreePrice * numberProductThree;
+        let totalPrice = totalPriceOne + totalPriceTwo + totalPriceThree;
+
+        //Виводимо результат
+
+        document.write(`
+        <table border = "1px">
+            <tr>
+                <th>Кількість товарів</th>
+                <th>Ціна товару</th>
+                <th>Загальна вартість</th>
+            </tr>
+            <tr>
+                <th>Перший товар: ${numberProductOne} шт</th>
+                <th>${productOnePrice}</th>
+                <td>${totalPriceOne}</td>
+            </tr>
+            <tr>
+                <th>Другий товар: ${numberProductTwo} шт</th>
+                <th>${productTwoPrice}</th>
+                <td>${totalPriceTwo}</td>
+            </tr>
+            <tr>
+                <th>Третій товар: ${numberProductThree} шт</th>
+                <th>${productThreePrice}</th>
+                <td>${totalPriceThree}</td>
+            </tr>
+            <tr>
+                <th>Загальна сума: </th>
+                <th></th>
+                <td>${totalPrice}</td>
+            </tr>
+        </table>
+        `)
+    </script>
+</body>
+
+</html>
