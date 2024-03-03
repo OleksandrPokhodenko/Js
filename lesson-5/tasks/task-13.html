@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 10</h1>
+    <p>Знайти суму всіх непарних чисел, що знаходяться між заданими користувачем числами.</p>
+    <script>
+        const userNumberMin = parseInt(prompt(`Введіть мінімальне число`, 0));
+        const userNumberMax = parseInt(prompt(`Введіть максимальне число`, 0));
+        let oddNum = userNumberMin;
+        let sum = 0;
+
+        if (oddNum % 2 === 0) {
+            oddNum++;
+            do {
+                sum += oddNum;
+                oddNum += 2;
+            } while (oddNum <= userNumberMax);
+        }
+        else {
+            do {
+                sum += oddNum;
+                oddNum += 2;
+            } while (oddNum <= userNumberMax);
+        }
+
+        document.write(`
+        Сума всіх непарних чисел в діапазоні від ${userNumberMin} до ${userNumberMax} = ${sum}
+        `)
+    </script>
+</body>
+
+</html>

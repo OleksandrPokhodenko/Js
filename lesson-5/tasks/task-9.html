@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .item {
+            display: inline-block;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Задача 6</h1>
+    <p>Вивести 3 таблиці (по 3 рядки і 3 стовпці у кожній) за зразком</p>
+    <script>
+
+        let tableDataNum = 1;
+
+        for (tabNum = 1; tabNum <= 3; tabNum++) {
+            document.write(`
+            <div class="item">
+            `)
+            for (tableRowNum = 1; tableRowNum <= 3; tableRowNum++) {
+                document.write(`
+            <table border = "1">
+                <tr>
+                    `)
+                for (i = 1; i <= 3; i++) {
+                    document.write(`<td>${tableDataNum}</td>`)
+                    tableDataNum++
+                }
+                document.write(`
+                </tr>
+            </table>
+                `)
+            }
+            document.write(`
+        </div>
+            `)
+        }
+    </script>
+</body>
+
+</html>

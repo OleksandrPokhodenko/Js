@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <h1>Задача 3</h1>
+    <p>Вивести таблицю з одним рядком і 7 стовпцями.</p>
+    <script>
+
+        document.write(`
+            <table border = "1">
+                <tr>`)
+        for (tableDataNum = 1; tableDataNum <= 7; tableDataNum++) {
+            document.write(`<td>${tableDataNum}</td>`)
+        }
+        document.write(`
+                </tr>
+            </table>
+                `)
+    </script>
+</body>
+
+</html>

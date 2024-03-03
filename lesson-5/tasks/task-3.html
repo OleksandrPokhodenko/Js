@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .list {
+            display: inline-block;
+        }
+
+        .item {
+            display: inline-block;
+        }
+
+        .button {
+            color: #fff;
+            background-color: grey;
+            font-size: 30px;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: rgb(86, 85, 85);
+            color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Задача 0</h1>
+    <p>Вивести на екран 8 кнопок з написом “Hello”.</p>
+    <script>
+
+        for (i = 0; i < 8; i++) {
+            document.write(`
+        <ul class = "list">
+            <li class="item">
+                <a href="#" class="button">Hello</a>
+            </li>
+        </ul>
+        `)
+        }
+    </script>
+</body>
+
+</html>
