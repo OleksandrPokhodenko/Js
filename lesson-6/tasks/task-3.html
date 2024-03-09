@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 3</h1>
+    <p>Інвестор вклав S тис. грн на 20 років під 20% річних, податок складає 5% від суми прибутку. Визначити за
+        допомогою
+        циклів суму, яку він одержить.</p>
+    <script>
+        let startSum = parseFloat(prompt('Введіть сумму яку ви хотілиб покласти під 20% річних на 20 років', 0));
+        let totalSum = 0;
+
+        for (let i = 0; i < 20; i++) {
+            profit = startSum * 20 / 100;
+            tax = profit * 5 / 100;
+            totalSum = startSum + profit - tax;
+            startSum = totalSum;
+        }
+
+        document.write(`
+        Сума яку ви отримаєте через 20 років складає ${totalSum.toFixed(2)} грн
+        `)
+    </script>
+</body>
+
+</html>

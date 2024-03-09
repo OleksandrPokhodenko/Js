@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 4</h1>
+    <p>Є n бактерій червоного кольору. Через 1 одиницю часу червона бактерія змінюється на зелену, потім ще через 1
+        одиницю часу ділиться на червону та зелену. Скільки буде всіх бактерій через k одиниць часу?</p>
+    <script>
+        let bacteriumsRedColorStart = parseInt(prompt('Введіть кількість бактерій червоного кольору', 0));
+        let k = parseInt(prompt('Введіть кількість одиниць часу', 0));
+        let bacteriumsGreenColor = 0;
+        let sumBacteriumsRedColor;
+
+        for (let i = 1; i <= k; i++) {
+
+            if (i % 2 !== 0) {
+                sumBacteriumsRedColor = 0;
+                bacteriumsGreenColor += bacteriumsRedColorStart;
+            }
+            else {
+                sumBacteriumsRedColor += bacteriumsRedColorStart;
+            }
+        }
+
+        let sum = bacteriumsGreenColor + sumBacteriumsRedColor;
+
+        document.write(`
+        На даному проміжку часу загальна кількість бактерій: ${sum}<br>
+        бактерій зеленого кольору: ${bacteriumsGreenColor}<br>
+        бактерій червоного кольору: ${sumBacteriumsRedColor}
+        `);
+    </script>
+</body>
+
+</html>

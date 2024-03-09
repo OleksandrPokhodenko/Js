@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 2</h1>
+    <p>Щоденно спортзал відвідує певна кількість людей. Користувач вводить такі дані: скільки людей відвідало спортзал
+        за день та вік кожного відвідувача. Потрібно вивести вік найстаршого та наймолодшого відвідувачів, а також
+        середній вік всіх відвідувачів спортзалу за день.</p>
+    <script>
+        const totalAthleteNum = parseInt(prompt('Введіть кількість спортсменів що відвідали спортзал за день'));
+        let maxAthleteAge = 0, minAthleteAge = +Infinity, totalAthleteAge = 0;
+        let athleteAge;
+
+        for (let i = 1; i <= totalAthleteNum; i++) {
+            athleteAge = parseInt(prompt(`Введіть вік спортсмена № ${i}`));
+            totalAthleteAge += athleteAge;
+            if (athleteAge > maxAthleteAge) maxAthleteAge = athleteAge;
+            else if (athleteAge < minAthleteAge) minAthleteAge = athleteAge;
+        }
+
+        let middleAthleteAge = totalAthleteAge / totalAthleteNum;
+
+        document.write(`
+        Найстаршому відвідувачу ${maxAthleteAge} років<br>
+        Наймолодшому відвідувачу ${minAthleteAge} років<br>
+        Середній вік відвідувачів ${middleAthleteAge.toFixed(1)} років
+        `)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 5</h1>
+    <p>Дано натуральні числа від 35 до 87. Надрукувати ті з них, які при діленні на 7 дають остачу 1, 2 або 5.</p>
+    <script>
+
+        for (let i = 35; i <= 87; i++) {
+            if (i % 7 === 1 || i % 7 === 2 || i % 7 === 5) {
+                desiredNum = i;
+                document.write(` ${desiredNum}<br>`)
+            }
+        }
+    </script>
+</body>
+
+</html>
