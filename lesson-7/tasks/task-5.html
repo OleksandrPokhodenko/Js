@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 5</h1>
+    <p>Створити окремі функції, які переводять:<br>
+        1.Сантиметри у дюйми;<br>
+        2.Кілограми у фунти;<br>
+        3.Кілометри у милі.</p>
+    <script>
+
+        function getConvertCentimeterOnInch() {
+            let centimeterNum = parseFloat(prompt('Введіть кількість сантиметрів які хочете перевести в дюйми'));
+            let inchNum = centimeterNum / 2.54;
+            alert(`${inchNum.toFixed(2)} дюймів`);
+        }
+
+        function getConvertKilogramOnPound() {
+            let kilogramNum = parseFloat(prompt('Введіть кількість кілограм які хочете перевести в фунти'));
+            let poundNum = kilogramNum / 0.45;
+            alert(`${poundNum.toFixed(2)} фунтів`);
+        }
+
+        function getConvertKilometerOnMile() {
+            let kilometerNum = parseFloat(prompt('Введіть кількість кілометрів які хочете перевести в милі'));
+            let mileNum = kilometerNum / 0.62;
+            alert(`${mileNum.toFixed(2)} миль`);
+        }
+
+        getConvertCentimeterOnInch();
+        getConvertKilogramOnPound();
+        getConvertKilometerOnMile();
+
+    </script>
+</body>
+
+</html>

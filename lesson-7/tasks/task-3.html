@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 3</h1>
+    <p>Створити окремі функції, які для 4 чисел знаходять:<br>
+        1.суму;<br>
+        2.добуток;<br>
+        3.середнє арифметичне;<br>
+        4.мінімальне значення.</p>
+    <script>
+
+        function getSum(num1, num2, num3, num4) {
+            let sum = num1 + num2 + num3 + num4;
+            return sum;
+        }
+
+        function getMultiplication(num1, num2, num3, num4) {
+            let multiplication = num1 * num2 * num3 * num4;
+            return multiplication;
+        }
+
+        function getArithmeticMean(num1, num2, num3, num4) {
+            let arithmeticMean = (num1 + num2 + num3 + num4) / 4;
+            return arithmeticMean;
+        }
+
+        function getMinNum(num1, num2, num3, num4) {
+            let minNum = num1;
+            if (minNum > num2) minNum = num2;
+            if (minNum > num3) minNum = num3;
+            if (minNum > num4) minNum = num4;
+            return minNum;
+        }
+
+        let num1 = parseFloat(prompt('Введіть перше число'));
+        let num2 = parseFloat(prompt('Введіть друге число'));
+        let num3 = parseFloat(prompt('Введіть третє число'));
+        let num4 = parseFloat(prompt('Введіть четверте число'));
+        let sumNum = getSum(num1, num2, num3, num4);
+        let multiplicationNum = getMultiplication(num1, num2, num3, num4);
+        let arithmeticMeanNum = getArithmeticMean(num1, num2, num3, num4);
+        let minNumber = getMinNum(num1, num2, num3, num4);
+
+        document.write(`
+        Сума чисел: ${sumNum}<br>
+        Добуток чисел: ${multiplicationNum}<br>
+        Середнє арифметичне: ${arithmeticMeanNum}<br>
+        Мінімальне серед чотирьох: ${minNumber}
+        `)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 1</h1>
+    <p> Створити функцію, яка за номером місяця повертає його назву.</p>
+    <script>
+        function getMounthName(mounthNum) {
+            switch (mounthNum) {
+                case 1:
+                    mounth = "Січень"
+                    break;
+                case 2:
+                    mounth = "Лютий"
+                    break;
+                case 3:
+                    mounth = "Березень"
+                    break;
+                case 4:
+                    mounth = "Квітень"
+                    break;
+                case 5:
+                    mounth = "Травень"
+                    break;
+                case 6:
+                    mounth = "Червень"
+                    break;
+                case 7:
+                    mounth = "Липень"
+                    break;
+                case 8:
+                    mounth = "Серпень"
+                    break;
+                case 9:
+                    mounth = "Вересень"
+                    break;
+                case 10:
+                    mounth = "Жовтень"
+                    break;
+                case 11:
+                    mounth = "Листопад"
+                    break;
+                case 12:
+                    mounth = "Грудень"
+                    break;
+                default: mounth = "Не вірний номер"
+                    break;
+            }
+            return mounth;
+        }
+
+        let mounthNum = parseInt(prompt('Введіть номер місяця року'));
+        let mounthName = getMounthName(mounthNum);
+
+        document.write(`Це місяць: ${mounthName}`)
+    </script>
+</body>
+
+</html>

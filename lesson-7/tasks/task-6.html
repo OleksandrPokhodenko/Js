@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 6</h1>
+    <p>Створити функцію, яка створює таблицю з вказаною кількістю рядків і стовпців (таблиця заповнюється
+        заданим фіксованим повідомленням).</p>
+    <script>
+        function getTable() {
+            let quantityRow = parseInt(prompt('Введіть кількість рядочків таблиці'));
+            let quantityColumn = parseInt(prompt('Введіть кількість стовбчиків таблиці'));
+            for (let i = 0; i < quantityRow; i++) {
+                document.write(`
+            <table border = "1">
+                <tr>
+            `)
+                for (let j = 0; j < quantityColumn; j++) {
+                    document.write(`
+                <td>Вчимо Java Script ;)</td>
+                `)
+                }
+                document.write(`
+            </tr>
+            </table>
+            `)
+            }
+        }
+        getTable();
+    </script>
+</body>
+
+</html>

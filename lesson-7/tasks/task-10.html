@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 10</h1>
+    <p>Дано покази температур (довільна кількість). Розробити функцію, яка дозволить знайти середнє
+        значення для додатних показів температури.</p>
+    <script>
+        function getAverageTemperature() {
+            for (let i = 1; i <= 10; i++) {
+                let temperature = parseFloat(prompt(`Введіть ${i} показник температури`));
+                if (temperature > 0) {
+                    totalTemperature += temperature;
+                    count++;
+                }
+            }
+            averageTemperature = totalTemperature / count;
+        }
+
+        let totalTemperature = 0, count = 0;
+        let averageTemperature;
+        getAverageTemperature();
+
+        document.write(`
+        Середнє значення додатніх показників температури: ${averageTemperature.toFixed(1)}
+        `)
+    </script>
+</body>
+
+</html>
