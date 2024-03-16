@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 1</h1>
+    <p>Дано масив, який містить оцінки з К предметів. Знайти середній бал і з’ясувати до якої категорії він
+        відноситься (відмінник, двійочник (має хоча би одну двійку), хорошист (оцінки добре і відмінно),
+        трійочник(є хоча би одна трійка)).</p>
+    <script>
+
+        let arr = [];
+        let k = parseInt(prompt('Введіть кількість предметів'));
+
+        function getRandomScore(minScore, maxScore) {
+            return minScore + Math.floor(Math.random() * (maxScore - minScore + 1));
+        }
+
+        function getArrScore(k) {
+            for (let i = 1; i <= k; i++) {
+                let score = getRandomScore(2, 5);
+                arr.push(score);
+            }
+            return arr;
+        }
+
+        function getAverageScore() {
+            let score = 0;
+            let countScore = 0;
+            for (let i = 0; i < arr.length; i++) {
+                score += arr[i];
+                countScore++;
+            }
+            return score / countScore;
+        }
+
+        function getCategoryStudent() {
+            let category;
+            let countScoreTwo = 0;
+            let countScoreThree = 0;
+            let countScoreFor = 0;
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] === 2) countScoreTwo++;
+                if (arr[i] === 3) countScoreThree++;
+                if (arr[i] === 4) countScoreFor++;
+            }
+            if (countScoreTwo > 0) category = "двійочник";
+            else if (countScoreThree > 0) category = "трійочник";
+            else if (countScoreFor > 0) category = "хорошист";
+            else (category = "відмінник");
+            return category;
+        }
+
+        let count = getArrScore(k);
+        let averageScore = getAverageScore();
+        let categoryStudent = getCategoryStudent();
+
+        document.write(`
+        Середня оцінка: ${Math.floor(averageScore)}<br>
+        Категорія студента: ${categoryStudent}
+        `)
+    </script>
+</body>
+
+</html>

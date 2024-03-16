@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 4</h1>
+    <ul>
+        <p>Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :</p>
+        <li>починаються на букву «А»;</li>
+        <li>перша і остання літери співпадають;</li>
+        <li>складаються з більше ніш 5 символів;</li>
+    </ul>
+    <script>
+
+        let arrAvtoNumber = [
+            'ВС1234ВК',
+            'АМ5678ОР',
+            'ІІ8901ТС',
+            'ВН2345ХО',
+            'АХ6789ІВ',
+            'АТ4321КА',
+            'ОР5678ВН',
+            'ТС9012ІІ',
+            'ХО3456АМ',
+            'ІВ7890АІ',
+        ];
+
+        function getAvtoNumberA() {
+            let count = 0;
+            let avtoNumber;
+            for (let i = 0; i < arrAvtoNumber.length; i++) {
+                avtoNumber = arrAvtoNumber[i];
+                if (avtoNumber[0] === "А") count++;
+            }
+            return count;
+        }
+
+        function getFirstAndLastLetterAvtoNumberIdentical() {
+            let count = 0;
+            let avtoNumber;
+            for (let i = 0; i < arrAvtoNumber.length; i++) {
+                avtoNumber = arrAvtoNumber[i];
+                if (avtoNumber[0] === avtoNumber[avtoNumber.length - 1]) count++;
+            }
+            return count;
+        }
+
+        function getAvtoNumbersMoreFive() {
+            count = 0;
+            let avtoNumber;
+            for (let i = 0; i < arrAvtoNumber.length; i++) {
+                avtoNumber = arrAvtoNumber[i];
+                if (avtoNumber.length > 5) count++;
+            }
+            return count;
+        }
+
+        let numbersA = getAvtoNumberA();
+        let firstAndLastLetterAvtoNumberIdentical = getFirstAndLastLetterAvtoNumberIdentical();
+        let avtoNumbersMoreFive = getAvtoNumbersMoreFive();
+
+        document.write(`
+        Кількість номерів які починаються на букву А: ${numbersA}<br>
+        Кількість номерів в яких співпадає перша і остання букви: ${firstAndLastLetterAvtoNumberIdentical}<br>
+        Кількість номерів які складаються більше ніж з 5 символів: ${avtoNumbersMoreFive}
+        `)
+
+    </script>
+</body>
+
+</html>

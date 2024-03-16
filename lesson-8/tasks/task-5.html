@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 5</h1>
+    <ol>
+        <p>Дано послідовність оцінок учня. Підрахувати кількість:</p>
+        <li>двійок</li>
+        <li>кількість хороших оцінок (добре, відмінно);</li>
+        <li>кількість оцінок, які нижче середнього.</li>
+    </ol>
+    <script>
+        let arrNumbersScores = [2, 5, 3, 4, 5, 3, 2, 5, 4, 2, 3, 2, 5, 4, 5];
+
+        function getNumbersDeuces() {
+            count = 0;
+            for (let i = 0; i < arrNumbersScores.length; i++) {
+                if (arrNumbersScores[i] === 2) count++;
+            }
+            return count;
+        }
+
+        function getNumbersFoursomesAndFives() {
+            count = 0;
+            for (let i = 0; i < arrNumbersScores.length; i++) {
+                if (arrNumbersScores[i] === 4 || arrNumbersScores[i] === 5) count++;
+            }
+            return count;
+        }
+
+        function getNumbersScoresBelowAverage() {
+            count = 0;
+            for (let i = 0; i < arrNumbersScores.length; i++) {
+                if (arrNumbersScores[i] === 2 || arrNumbersScores[i] === 3) count++;
+            }
+            return count;
+        }
+
+        let numbersDeuces = getNumbersDeuces();
+        let numbersFoursomesAndFives = getNumbersFoursomesAndFives();
+        let numbersScoresBelowAverage = getNumbersScoresBelowAverage();
+
+        document.write(`
+        Кількість двійок: ${numbersDeuces}<br>
+        Кількість хороших оцінок: ${numbersFoursomesAndFives}<br>
+        Кількість оцінок, які нижче середнього: ${numbersScoresBelowAverage}
+        `) 
+    </script>
+</body>
+
+</html>
