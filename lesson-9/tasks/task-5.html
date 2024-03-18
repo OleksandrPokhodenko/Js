@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 5</h1>
+    <p>Дано масив елементів. Знайти добуток додатних елементів<br>
+        //======= Тут використовуйте що хочете для розв’язання==================</p>
+    <script>
+        const arrayNumbers = [-20, 10, 5, 3, 0, -5, -7, -15, 40, 17, -50, 2, -10, 23, 41, 99];
+
+        function getMultiplicationOfPositiveNumbers(arrayNumbers) {
+            let mmultiplication = 1;
+            for (let i = 0; i < arrayNumbers.length; i++) {
+                if (arrayNumbers[i] > 0) mmultiplication *= arrayNumbers[i];
+            }
+            return mmultiplication;
+        }
+
+        let multiplication = getMultiplicationOfPositiveNumbers(arrayNumbers);
+
+        document.write(`Добуток додатніх елементів масиву дорівнює: ${multiplication}`);
+
+    </script>
+</body>
+
+</html>

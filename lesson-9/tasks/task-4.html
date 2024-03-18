@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 4</h1>
+    <p>Дано масив елементів. Вивести на екран елементи, що більші за 100</p>
+    <script>
+        const arrayNumbers = [9, 25, 50, 134, 600, 36, 72, -45, 123, 750, 99, 101, 250, 300, 78, 1];
+
+        arrayNumbers.forEach(
+            (element => {
+                if (element > 100)
+                    document.write(`${element} `)
+            })
+        )
+
+    </script>
+</body>
+
+</html>

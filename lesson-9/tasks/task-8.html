@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 8</h1>
+    <p>Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А»</p>
+    <script>
+
+        const arrAvtoNumbers = [
+            'АР3508ВН',
+            'АМ5678ОР',
+            'ІІ8901ТС',
+            'ВН2345ХО',
+            'АХ6789ІВ',
+            'АТ4321КА',
+            'ОР5678ВН',
+            'ТС9012ІІ',
+            'АО3456АМ',
+            'ІВ7890АІ'
+        ];
+
+        const arrIntermediate = [];
+
+        function getArrIntermediate(arrAvtoNumbers, arrIntermediate) {
+            let number;
+            for (let i = 0; i < arrAvtoNumbers.length; i++) {
+                number = arrAvtoNumbers[i]
+                if (number[0] === 'А') arrIntermediate[i] = number
+                else arrIntermediate[i] = 0
+            }
+            return arrIntermediate;
+        }
+
+        getArrIntermediate(arrAvtoNumbers, arrIntermediate);
+
+        const newArrayAvtoNumbers = arrIntermediate.filter(
+            el => el !== 0
+        )
+
+
+        document.write(`${newArrayAvtoNumbers}`)
+    </script>
+</body>
+
+</html>
