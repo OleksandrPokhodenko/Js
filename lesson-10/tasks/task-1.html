@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 1</h1>
+    <p>Дано історію цін на цінні папери за деякий період (згенерувати від 1 до 10000)</p>
+
+    <script>
+
+        const arrPriceSecurities = [];
+
+        function getRandomNumberPriceSecurities() {
+            let randomNumberPriceSecurities = 1 + Math.floor(Math.random() * 10000);
+            return randomNumberPriceSecurities;
+        }
+
+        for (let i = 0; i < 30; i++) {
+            arrPriceSecurities.push(getRandomNumberPriceSecurities())
+        }
+
+        document.write(`Сгенерований масив з історією цін:<br>${arrPriceSecurities}<br>`);
+        document.write(`<p></p>`);
+
+        //Сформувати новий масив, у якому є тільки ті, що більші за 1000 грн.---------------------------
+
+        const arrPriceMore1000 = arrPriceSecurities.filter(
+            element => element > 1000
+        );
+
+        document.write(`Масив цін, які більші за 1000:<br>${arrPriceMore1000}<br>`);
+        document.write(`<p></p>`);
+
+        //Сформувати новий масив, у якому є номери тільки тих, що більші за 1000 грн---------------------
+
+        const arrIndexMore1000 = [];
+
+        for (let i = 0; i < arrPriceSecurities.length; i++) {
+            if (arrPriceSecurities[i] > 1000) arrIndexMore1000.push(i);
+        }
+
+        document.write(`<p></p>`);
+
+        //Сформувати список з тих цін, які більші за попереднє значення----------------------------------
+
+        document.write(`Список цін які більші за попереднє значення:<br>`)
+
+        arrPriceSecurities.filter(
+            (element, index, arr) => {
+                if (arr[index] < arr[index + 1]) document.write(`${arr[index + 1]} `)
+            }
+        );
+
+        document.write(`<p></p>`);
+
+        //Сформувати новий масив, що міститиме значення цін у відсотках стосовно максимального------------
+
+        let arrPriceSecuritiesInPercent = [];
+
+        const maxPrice = Math.max(...arrPriceSecurities);
+
+        arrPriceSecuritiesInPercent = arrPriceSecurities.map(
+            element => (element * 100 / maxPrice).toFixed(2)
+        )
+
+        document.write(`Значення цін у відсотках: ${arrPriceSecuritiesInPercent}`);
+        document.write(`<p></p>`);
+
+        //Підрахувати кількість змін цін-------------------------------------------------------------------
+
+        function getNumberPriceChange(array) {
+            let count = 0;
+            array.forEach(
+                (element, index, array) => {
+                    if (array[index] !== array[index + 1]) count++
+                }
+            )
+            return count;
+        }
+
+        let countPriceChange = getNumberPriceChange(arrPriceSecurities);
+
+        document.write(`Кількість змін цін: ${countPriceChange}`);
+        document.write(`<p></p>`);
+
+        //Визначити, чи є ціна, що менше 1000---------------------------------------------------------------
+
+        document.write('Чи є ціна менша за 1000:')
+
+        function isNumberPriceLess1000(array) {
+            let result = array.some(
+                element => element < 1000
+            )
+            if (result === true) document.write(' є');
+            else document.write(' немає');
+        }
+
+        isNumberPriceLess1000(arrPriceSecurities);
+
+        document.write(`<p></p>`);
+
+        //Визначати, чи усі ціни більше за 1000--------------------------------------------------------------
+
+        document.write('Чи всі ціни більше за 1000:')
+
+        function isNumbersPriceMore1000(array) {
+            let result = array.every(
+                element => element > 1000
+            )
+            if (result === true) document.write(' всі');
+            else document.write(' не всі');
+        }
+
+        isNumbersPriceMore1000(arrPriceSecurities);
+
+        document.write(`<p></p>`);
+
+        //Підрахувати кількість цін, що більше за 1000-------------------------------------------------------
+
+        function getNumbersPriceMore1000(array) {
+            let count = 0;
+            array.forEach(
+                element => {
+                    if (element > 1000) count++
+                }
+            )
+            return count;
+        }
+
+        let countNumbersPriceMore1000 = getNumbersPriceMore1000(arrPriceSecurities);
+
+        document.write(`Кількість цін більших за 1000: ${countNumbersPriceMore1000}`);
+        document.write(`<p></p>`);
+
+        //Підрахувати суму цін, що більше за 1000-----------------------------------------------------------
+
+        function geSumtNumbersPriceMore1000(array) {
+            let sum = array.reduce(
+                (prevResult, el, i, array) =>
+                    (el > 1000 ? el + prevResult : prevResult), 0
+            )
+            return sum;
+        }
+
+        let sumtNumbersPriceMore1000 = geSumtNumbersPriceMore1000(arrPriceSecurities);
+
+        document.write(`Сума цін, які більше 1000: ${sumtNumbersPriceMore1000}`);
+        document.write(`<p></p>`);
+
+        //Знайти першу ціну, що більше за 1000--------------------------------------------------------------
+
+        function getFirstPriceMore1000(array) {
+            let PriceMore1000 = array.find(
+                element => element > 1000
+            )
+            return PriceMore1000;
+        }
+
+        let firstPriceMore1000 = getFirstPriceMore1000(arrPriceSecurities);
+
+        document.write(`Перша ціна, яка більше 1000: ${firstPriceMore1000}`);
+        document.write(`<p></p>`);
+
+        //Знайти індекс першої ціни, що більше за 1000------------------------------------------------------
+
+        function getFirstIndexPriceMore1000(array) {
+            let indexPriceMore1000 = array.findIndex(
+                element => element > 1000
+            )
+            return indexPriceMore1000;
+        }
+
+        let firstIndexPriceMore1000 = getFirstIndexPriceMore1000(arrPriceSecurities);
+
+        document.write(`Індекс першої ціни, що більша за 1000: ${firstIndexPriceMore1000}`)
+        document.write('<p></p>')
+
+        //Знайти останню ціну, що більше за 1000------------------------------------------------------------
+
+        function getLastPriceMore1000(array) {
+            let priceMore1000 = array.findLast(
+                element => element > 1000
+            )
+            return priceMore1000;
+        }
+
+        let lastPriceMore1000 = getLastPriceMore1000(arrPriceSecurities);
+
+        document.write(`Остання ціна, яка більша за 1000: ${lastPriceMore1000}`);
+        document.write('<p></p>');
+
+        //Знайти індекс останньої ціни, що більше за 1000---------------------------------------------------
+
+        function getLastIndexPriceMore1000(array) {
+            let priceMore1000 = array.findLastIndex(
+                element => element > 1000
+            )
+            return priceMore1000;
+        }
+
+        let lastIndexPriceMore1000 = getLastIndexPriceMore1000(arrPriceSecurities);
+
+        document.write(`Індекс останньої ціни, яка більше за 1000: ${lastIndexPriceMore1000}`);
+
+    </script>
+</body>
+
+</html>
