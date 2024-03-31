@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 1</h1>
+    <p>Знайти суми елементів у вказаній області</p>
+
+    <script>
+
+        const arrayNumbers = [
+            [1, 2, 3, 4, 5, 6],
+            [7, 8, 9, 10, 11, 12],
+            [13, 14, 15, 16, 17, 18],
+            [19, 20, 21, 22, 23, 24],
+            [25, 26, 27, 28, 29, 30],
+            [31, 32, 33, 34, 35, 36]
+        ];
+
+        //номери рядків від 0 до половини, стовпці від 0 до половини------------------------------
+
+        function getSumFirstQuarter(array) {
+            let sum = 0;
+            for (let row = 0; row < array.length / 2; row++) {
+                for (let col = 0; col < array[row].length / 2; col++) {
+                    sum += array[row][col];
+                }
+            }
+            return sum;
+        }
+
+        let sumFirstQuarter = getSumFirstQuarter(arrayNumbers);
+
+        document.write(`Сума елементів першої чверті: ${sumFirstQuarter} <br>`);
+
+        //номери рядків від 0 до половини, стовпці від половини до кінця---------------------------
+
+        function getSumSecondQuarter(array) {
+            let sum = 0;
+            for (let row = 0; row < array.length / 2; row++) {
+                for (let col = 3; col < array[row].length; col++) {
+                    sum += array[row][col];
+                }
+            }
+            return sum;
+        }
+
+        let sumSecondQuarter = getSumSecondQuarter(arrayNumbers);
+
+        document.write(`Сума елементів другої чверті: ${sumSecondQuarter} <br>`);
+
+        //номери рядків від половини до кінця, стовпці від 0 до половини-----------------------------
+
+        function getSumThirdQuarter(array) {
+            let sum = 0;
+            for (let row = 3; row < array.length; row++) {
+                for (let col = 0; col < array[row].length / 2; col++) {
+                    sum += array[row][col];
+                }
+            }
+            return sum;
+        }
+
+        let sumThirdQuarter = getSumThirdQuarter(arrayNumbers);
+
+        document.write(`Сума елементів третьої чверті: ${sumThirdQuarter} <br>`);
+
+        //номери рядків від половини до кінця , стовпці від половини до кінця-------------------------
+
+        function getSumFourthQuarter(array) {
+            let sum = 0;
+            for (let row = 3; row < array.length; row++) {
+                for (let col = 3; col < array[row].length; col++) {
+                    sum += array[row][col];
+                }
+            }
+            return sum;
+        }
+
+        let sumFourthQuarter = getSumFourthQuarter(arrayNumbers);
+
+        document.write(`Сума елементів четвертої чверті: ${sumFourthQuarter} <br>`);
+
+        //Суму парних рядків---------------------------------------------------------------------------
+
+        function getSumEvenRows(array) {
+            let sum = 0;
+            for (let row = 1; row < array.length; row += 2) {
+                for (let col = 0; col < array[row].length; col++) {
+                    sum += array[row][col];
+                }
+            }
+            return sum;
+        }
+
+        let sumEvenRows = getSumEvenRows(arrayNumbers);
+
+        document.write(`Сума елементів парних рядків: ${sumEvenRows} <br>`);
+
+        //Суму непарних стовпців------------------------------------------------------------------------
+
+        function getSumOddCol(array) {
+            let sum = 0;
+            for (let row = 0; row < array.length; row++) {
+                for (let col = 0; col < array[row].length; col += 2) {
+                    sum += array[row][col];
+                }
+            }
+            return sum;
+        }
+
+        let sumOddCol = getSumOddCol(arrayNumbers);
+
+        document.write(`Сума елементів непарних стовпців: ${sumOddCol} <br>`);
+
+        //У парних рядках – непарні стовпці, у непарних – парні.-----------------------------------------
+
+        function getSumStaggered(array) {
+            let sum = 0;
+            for (let row = 0; row < array.length; row += 2) {
+                for (let col = 1; col < array[row].length; col += 2) {
+                    sum += array[row][col];
+                }
+            }
+            for (let row = 1; row < array.length; row += 2) {
+                for (let col = 0; col < array[row].length; col += 2) {
+                    sum += array[row][col];
+                }
+            }
+            return sum;
+        }
+
+        let sumStaggered = getSumStaggered(arrayNumbers);
+
+        document.write(`Сума елементів у парних рядках - непарних стовпців і у непарних - парних: ${sumStaggered} <br>`);
+
+
+    </script>
+</body>
+
+</html>

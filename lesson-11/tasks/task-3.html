@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 3</h1>
+    <p>Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. Користувач стріляє
+        вказуючи координати. Гра продовжується поки не потоплено усі кораблі або у користувача не закінчаться снаряди.
+    </p>
+    <script>
+
+        let gameField = [];
+        prompt('Гра морський бій');
+        let rowValue = 6;
+        let colValue = 6;
+        let shipValue = 5;
+        let missleValue = parseInt(prompt('Введіть кількість снарядів'));
+
+        function getGeneratedField(rowValue, colValue, array) {
+            for (let row = 0; row < rowValue; row++) {
+                let col = new Array(colValue).fill(0);
+                array.push(col);
+            }
+            for (let s = 0; s < shipValue;) {
+                let r = Math.floor(Math.random() * rowValue);
+                let c = Math.floor(Math.random() * colValue);
+                if (array[r][c] !== 1)
+                    array[r][c] = 1;
+                s++;
+            }
+            return array;
+        }
+
+        getGeneratedField(rowValue, colValue, gameField);
+
+        console.log(gameField);
+
+        function game(shipValue, missleValue, array) {
+            while (shipValue > 0 && missleValue > 0) {
+                let r = parseInt(prompt(`Введіть номер рядочка від 1 до ${rowValue}`)) - 1;
+                let c = parseInt(prompt(`Введіть номер колонки від 1 до ${colValue}`)) - 1;
+                missleValue--;
+                if (array[r][c] === 1) {
+                    alert('Влучили');
+                    array[r][c] = 0;
+                }
+                else alert('Мимо');
+            }
+            if (shipValue === 0) alert('Перемога');
+            else alert('Програш');
+        }
+
+        game(shipValue, missleValue, gameField);
+
+        console.log(gameField);
+
+
+
+    </script>
+</body>
+
+</html>
