@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 4</h1>
+    <p>Для розглянутих методів сортування спробувати вивести етапи сортування шляхом виведення відповідних таблиць за
+        зразком .</p>
+    <script>
+
+        let arrayNumber = [];
+        const num = 30;
+
+        function getRandomArrayNumber(num, array) {
+            for (let i = 0; i < num; i++) {
+                let randomNum = 1 + Math.floor(Math.random() * 100);
+                array.push(randomNum);
+            }
+            return array;
+        }
+
+        getRandomArrayNumber(num, arrayNumber);
+
+        document.write('Сортування бульбашкою<br>');
+        document.write(`<p></p>`);
+
+        let sortedBubble = [...arrayNumber];
+
+        let changed;
+
+        do {
+            changed = false;
+            for (let i = 1; i < sortedBubble.length; i++) {
+                if (sortedBubble[i - 1] > sortedBubble[i]) {
+                    let tmp = sortedBubble[i - 1];
+                    sortedBubble[i - 1] = sortedBubble[i];
+                    sortedBubble[i] = tmp;
+                    changed = true;
+                    document.write(`[${sortedBubble}]<br>`);
+                }
+            }
+        }
+        while (changed);
+
+        document.write(`<p></p>`);
+        document.write('Сортування змішуванням<br>');
+        document.write(`<p></p>`);
+
+        let sortedCocktail = [...arrayNumber];
+
+        let leftIndex = 0;
+        let rightIndex = sortedCocktail.length - 1;
+
+        while (leftIndex < rightIndex) {
+            for (let idx = 0; idx < rightIndex; idx++) {
+                if (sortedCocktail[idx] > sortedCocktail[idx + 1]) {
+                    let tmp = sortedCocktail[idx];
+                    sortedCocktail[idx] = sortedCocktail[idx + 1];
+                    sortedCocktail[idx + 1] = tmp;
+                    document.write(`[${sortedCocktail}]<br>`);
+                }
+            }
+            rightIndex--;
+            for (let idx = rightIndex; idx > leftIndex; idx--) {
+                if (sortedCocktail[idx] < sortedCocktail[idx - 1]) {
+                    let tmp = sortedCocktail[idx - 1];
+                    sortedCocktail[idx - 1] = sortedCocktail[idx];
+                    sortedCocktail[idx] = tmp;
+                    document.write(`[${sortedCocktail}]<br>`);
+                }
+            }
+            leftIndex++;
+        }
+
+        document.write(`<p></p>`);
+        document.write('Сортування включенням<br>');
+        document.write(`<p></p>`);
+
+        let insertionSorted = [...arrayNumber];
+
+        for (let k = 1; k < insertionSorted.length; k++) {
+            let currentElement = insertionSorted[k];
+            let i = k - 1;
+            while (i >= 0 && insertionSorted[i] > currentElement) {
+                insertionSorted[i + 1] = insertionSorted[i];
+                i--;
+            }
+            insertionSorted[i + 1] = currentElement;
+            document.write(`[${insertionSorted}]<br>`);
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 2</h1>
+    <p>Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів та порівнянь чисел під час сортування
+        змішуванням.</p>
+    <script>
+
+        let arrayNumber = [];
+        const num = 30;
+
+        function getRandomArrayNumber(num, array) {
+            for (let i = 0; i < num; i++) {
+                let randomNum = 1 + Math.floor(Math.random() * 100);
+                array.push(randomNum);
+            }
+            return array;
+        }
+
+        getRandomArrayNumber(num, arrayNumber);
+
+        let leftIndex = 0;
+        let rightIndex = arrayNumber.length - 1;
+        let exchange = 0;
+        let comparison = 0;
+
+        while (leftIndex < rightIndex) {
+            for (let idx = 0; idx < rightIndex; idx++) {
+                comparison++;
+                if (arrayNumber[idx] > arrayNumber[idx + 1]) {
+                    let tmp = arrayNumber[idx];
+                    arrayNumber[idx] = arrayNumber[idx + 1];
+                    arrayNumber[idx + 1] = tmp;
+                    exchange++;
+                }
+            }
+            rightIndex--;
+            for (let idx = rightIndex; idx > leftIndex; idx--) {
+                comparison++;
+                if (arrayNumber[idx] < arrayNumber[idx - 1]) {
+                    let tmp = arrayNumber[idx - 1];
+                    arrayNumber[idx - 1] = arrayNumber[idx];
+                    arrayNumber[idx] = tmp;
+                    exchange++;
+                }
+            }
+            leftIndex++;
+        }
+
+        document.write(`Під час сортування змішуванням було:<br>Порівнянь ${comparison}<br>Обмінів ${exchange}`);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 1</h1>
+    <p>Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів та порівнянь чисел під час сортування
+        бульбашкою</p>
+    <script>
+
+        let arrayNumber = [];
+        const num = 30;
+
+        function getRandomArrayNumber(num, array) {
+            for (let i = 0; i < num; i++) {
+                let randomNum = 1 + Math.floor(Math.random() * 100);
+                array.push(randomNum);
+            }
+            return array;
+        }
+
+        getRandomArrayNumber(num, arrayNumber);
+
+        let changed;
+        let exchange = 0;
+        let comparison = 0;
+
+        do {
+            changed = false;
+            for (let i = 1; i < arrayNumber.length; i++) {
+                comparison++;
+                if (arrayNumber[i - 1] > arrayNumber[i]) {
+                    let tmp = arrayNumber[i - 1];
+                    arrayNumber[i - 1] = arrayNumber[i];
+                    arrayNumber[i] = tmp;
+                    changed = true;
+                    exchange++;
+                }
+            }
+        }
+        while (changed);
+
+        document.write(`Під час сортування бульбашкою було:<br>обмінів: ${exchange}<br>порівнянь:${comparison}`);
+    </script>
+</body>
+
+</html>
