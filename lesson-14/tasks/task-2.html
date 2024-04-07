@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 2</h1>
+    <p>Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N місяців.</p>
+    <script>
+
+        let day = parseInt(prompt('Введіть день'));
+        let mounth = parseInt(prompt('Введіть місяць'));
+        let year = parseInt(prompt('Введіть рік'));
+        let N = parseInt(prompt('Через скільки місяців треба визначити рік'));
+
+        let dateObject = { day, mounth, year }
+
+        console.log(dateObject);
+
+        function getYearNumber(object, N) {
+            let yer = object.year;
+            let mounth = object.mounth;
+            if ((mounth + N) > 12) {
+                let yearCount = Math.floor((mounth + N) / 12);
+                let newYearNumber = yer + yearCount;
+                return newYearNumber;
+            }
+            else return year;
+        }
+
+        let yearNumber = getYearNumber(dateObject, N);
+
+        document.write(`Через ${N} місяців буде ${yearNumber} рік`);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Задача 1</h1>
+    <p>Описати масив об’єктів – сайтів розроблених компанією з такими властивостями</p>
+    <p>----- Властивості ------</p>
+    <ul>
+        <li>назва компанії на час розробки (назву періодично змінюють)</li>
+        <li>власник компанії</li>
+        <li>споснсори (масив спонсорів)</li>
+        <ul>
+            <li>прізвище спонсора</li>
+            <li>ім’я спонсора</li>
+            <li>сума вкладень спонсора</li>
+        </ul>
+        <li>рік випуску</li>
+        <li>вартість сайту</li>
+    </ul>
+
+    <p> Знайти:</p>
+
+    <script>
+
+        let companyProperties = [
+            {
+                companyName: 'IT Teсhnology',
+                companyHolder: 'Pohodenko Oleksandr',
+                sponsors: [
+                    {
+                        surname: 'Petrenko',
+                        name: 'Ivan',
+                        amountOfInvestment: 100000,
+                    },
+                    {
+                        surname: 'Ivanenko',
+                        name: 'Maksim',
+                        amountOfInvestment: 250000,
+                    },
+                    {
+                        surname: 'Sidorenko',
+                        name: 'Kirill',
+                        amountOfInvestment: 50000,
+                    },
+                ],
+                yearOfRelease: 2024,
+                siteCost: 120000,
+            },
+            {
+                companyName: 'IT Teсhnology',
+                companyHolder: 'Pohodenko Oleksandr',
+                sponsors: [
+                    {
+                        surname: 'Petrenko',
+                        name: 'Ivan',
+                        amountOfInvestment: 70000,
+                    },
+                    {
+                        surname: 'Ivanenko',
+                        name: 'Maksim',
+                        amountOfInvestment: 150000,
+                    },
+                    {
+                        surname: 'Sidorenko',
+                        name: 'Kirill',
+                        amountOfInvestment: 25000,
+                    },
+                ],
+                yearOfRelease: 2018,
+                siteCost: 80000,
+            },
+            {
+                companyName: 'IT Only',
+                companyHolder: 'Pohodenko Oleksandr',
+                sponsors: [
+                    {
+                        surname: 'Vitrenko',
+                        name: 'Viktoria',
+                        amountOfInvestment: 10000,
+                    },
+                    {
+                        surname: 'Luchko',
+                        name: 'Oleg',
+                        amountOfInvestment: 5000,
+                    },
+                    {
+                        surname: 'Sapa',
+                        name: 'Bogdan',
+                        amountOfInvestment: 15000,
+                    },
+                ],
+                yearOfRelease: 2005,
+                siteCost: 8000,
+            },
+            {
+                companyName: 'IT Only',
+                companyHolder: 'Pohodenko Oleksandr',
+                sponsors: [
+                    {
+                        surname: 'Vitrenko',
+                        name: 'Viktoria',
+                        amountOfInvestment: 10000,
+                    },
+                    {
+                        surname: 'Luchko',
+                        name: 'Oleg',
+                        amountOfInvestment: 25000,
+                    },
+                    {
+                        surname: 'Sapa',
+                        name: 'Bogdan',
+                        amountOfInvestment: 30000,
+                    },
+                ],
+                yearOfRelease: 2008,
+                siteCost: 20000,
+            },
+            {
+                companyName: 'ITTeсhnology',
+                companyHolder: 'Pohodenko Oleksandr',
+                sponsors: [
+                    {
+                        surname: 'Petrenko',
+                        name: 'Ivan',
+                        amountOfInvestment: 130000,
+                    },
+                    {
+                        surname: 'Ivanenko',
+                        name: 'Maksim',
+                        amountOfInvestment: 220000,
+                    },
+                    {
+                        surname: 'Sidorenko',
+                        name: 'Kirill',
+                        amountOfInvestment: 50000,
+                    },
+                ],
+                yearOfRelease: 2020,
+                siteCost: 100000,
+            },
+        ]
+
+        //загальну вартість усіх сайтів----------------------------------------------------------------------------------------------
+
+        let sumSiteCost = companyProperties.reduce((prevSum, array) => prevSum + array.siteCost, 0);
+
+        document.write(`Загальна вартість усіх сайтів: ${sumSiteCost}<br>`);
+        document.write(`<p></p>`);
+
+        //кількість сайтів, що було зроблено між 2000 та 2009 рр.
+
+        let sitesThatWereMadeBetween2000And2009 = companyProperties.reduce((prevCount, array) => {
+            if (array.yearOfRelease >= 2000 && array.yearOfRelease <= 2009) prevCount += 1;
+            else prevCount;
+            return prevCount;
+        }, 0
+        );
+
+        document.write(`Кількість сайтів, що було зроблено між 2000 та 2009 рр: ${sitesThatWereMadeBetween2000And2009}<br>`);
+        document.write(`<p></p>`);
+
+        //кількість сайтів, де сума спонсорських вкладень була більшою за 100000----------------------------------------------------
+
+        let sitesWhereSponsorshipMore100000 = companyProperties.reduce((prevCount, array) => {
+            if (array.sponsors.reduce((prevSum, array) => prevSum += array.amountOfInvestment, 0) > 100000)
+                prevCount += 1;
+            else prevCount;
+            return prevCount;
+        }, 0);
+
+        document.write(`Кількість сайтів, де сума спонсорських вкладень була більшою за 100000: ${sitesWhereSponsorshipMore100000}<br>`);
+        document.write(`<p></p>`);
+
+        //створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)---------------------------
+
+        let sponsorsSurname = companyProperties.map(array => array.sponsors.map(array => `${array.name} ${array.surname}`));
+
+        document.write(`Загальний список усіх спонсорів:<br>${sponsorsSurname}`);
+        document.write(`<p></p>`);
+
+        //знайти рік, коли прибуток був найбільшим
+
+        let coast = -Infinity;
+        let year;
+
+        for (let i = 0; i < companyProperties.length; i++) {
+            if (companyProperties[i].siteCost > coast) {
+                coast = companyProperties[i].siteCost;
+                year = companyProperties[i].yearOfRelease;
+            }
+        }
+
+        document.write(`Рік, коли прибуток був найбільшим: ${year}`);
+        document.write(`<p></p>`);
+
+        //упорядкувати список за спаданням прибутку----------------------------------------------------------------------------------
+
+        function getDescendingProfit(array) {
+            let changed;
+            do {
+                changed = false;
+                for (let i = 1; i < array.length; i++) {
+                    if (array[i].siteCost > array[i - 1].siteCost) {
+                        let temp = array[i];
+                        array[i] = array[i - 1];
+                        array[i - 1] = temp;
+                        changed = true;
+                    }
+                }
+            }
+            while (changed);
+            return array;
+        }
+
+        let descendingProfit = getDescendingProfit(companyProperties);
+
+        console.log(companyProperties);
+
+        //Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартістю до 10000 і більше 10000--------------------------
+
+        let priceOfSitesUpTo10000 = [];
+        let priceOfSitesAboveTo10000 = [];
+
+        descendingProfit.forEach((element, index, array) => {
+            if (array[index].siteCost <= 10000) priceOfSitesUpTo10000.push(array[index]);
+            else priceOfSitesAboveTo10000.push(array[index]);
+        });
+
+        console.log(priceOfSitesUpTo10000);
+        console.log(priceOfSitesAboveTo10000);
+
+    </script>
+</body>
+
+</html>
