@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 3</h1>
+    <p>Об’єкт “Фірма” (використати члени-класи)</p>
+    <p>поля</p>
+    <ol>
+        <li>назва фірми;</li>
+        <li>дата заснування (рік, місяць);</li>
+        <li>Товари, які доступні (sell_status:"available")</li>
+        <li>послуги (назва послуги, вартість, термін виконання);</li>
+        <li>адреси філіалів (країна, місто, вулиця, номер будинку);</li>
+    </ol>
+    <p>методи</p>
+    <ol>
+        <li>визначення кількості років існування фірми;</li>
+        <li>виведення всіх філіалів фірми у вказаному місті;</li>
+        <li>виведення на екран послуг, що можуть бути виконані за вказану суму грошей та вказаний термін часу;</li>
+    </ol>
+    <script>
+
+        class Products {
+            #product
+            #sell_status
+            constructor(product, sell_status = 'available') {
+                this.Product = product
+                this.Sell_status = sell_status
+            }
+            get Product() {
+                return this.#product
+            }
+            set Product(val) {
+                if (val.length === 0) throw new arror('Назва продукту не може бути порожньою')
+                this.#product = val
+            }
+            get Sell_status() {
+                return this.#sell_status
+            }
+            set Sell_status(val) {
+                if (val.length === 0) throw new arror('Статус не може бути порожнім')
+                this.#sell_status = val
+            }
+            toString() {
+                return `Доступність продукту "${this.Product}" : ${this.Sell_status}<br>`
+            }
+        }
+
+        let productsList = [
+            new Products('Apple iPhone 15 Pro Max'),
+            new Products('Samsung Galaxy S22 Ultra'),
+            new Products('Google Pixel 7 Pro'),
+            new Products('Apple iPhone 14 Pro Max'),
+            new Products('Samsung Galaxy S21 FE', 'not available'),
+            new Products('Xiaomi Poco M4 Pro'),
+        ]
+
+        class Services {
+            #nameOfService
+            #cost
+            #deadLine
+            constructor(nameOfService, cost, deadLine) {
+                this.NameOfService = nameOfService
+                this.Cost = cost
+                this.DeadLine = deadLine
+            }
+            get NameOfService() {
+                return this.#nameOfService
+            }
+            set NameOfService(val) {
+                if (val.length === 0) throw new arror('Назва послуги не може бути порожньою')
+                this.#nameOfService = val
+            }
+            get Cost() {
+                return this.#cost
+            }
+            set Cost(val) {
+                if (val < 0) throw new arror('Ціна не може бути від`ємною')
+                this.#cost = val
+            }
+            get DeadLine() {
+                return this.#deadLine
+            }
+            set DeadLine(val) {
+                if (val < 0) throw new arror('Термін виконання не може бути від`ємним')
+                this.#deadLine = val
+            }
+            toString() {
+                return `послуга "${this.NameOfService}" коштує ${this.Cost} грн, та буде виконана за ${this.DeadLine} днів<br>`
+            }
+        }
+
+        let servicesList = [
+            new Services('Заміна дісплея', 2000, 1),
+            new Services('Заміна скла дісплея', 1000, 1),
+            new Services('Ремонт пральної машинки', 8000, 5),
+            new Services('Ремонт телевізора', 5000, 2),
+            new Services('Ремонт комп`ютера', 3000, 3),
+        ]
+
+        class Adresses {
+            #country
+            #city
+            #street
+            #houseNumber
+            constructor(country, city, street, houseNumber) {
+                this.Country = country
+                this.City = city
+                this.Street = street
+                this.HouseNumber = houseNumber
+            }
+            get Country() {
+                return this.#country
+            }
+            set Country(val) {
+                if (val.length === 0) throw new arror('Назва країни не може бути порожньою')
+                this.#country = val
+            }
+            get City() {
+                return this.#city
+            }
+            set City(val) {
+                if (val.length === 0) throw new error('Назва міста не може бути порожньою')
+                this.#city = val
+            }
+            get Street() {
+                return this.#street
+            }
+            set Street(val) {
+                if (val.length === 0) throw new arror('Назва вулиці не може бути порожньою')
+                this.#street = val
+            }
+            get HouseNumber() {
+                return this.#houseNumber
+            }
+            set HouseNumber(val) {
+                if (val < 1) throw new arror('Номер будинку не може бути менше 1')
+                this.#houseNumber = val
+            }
+            toString() {
+                return `Адреса філіала: ${this.Country}, місто ${this.City}, вулиця ${this.Street}, будинок ${this.HouseNumber}<br>`
+            }
+        }
+
+        let adressesList = [
+            new Adresses('Україна', 'Київ', 'Шевченка', 8),
+            new Adresses('Україна', 'Запоріжжя', 'Проспект Соборний', 242),
+            new Adresses('Україна', 'Львів', 'Перемоги', 15),
+            new Adresses('Польща', 'Варшава', 'Пілсудського', 10),
+            new Adresses('Україна', 'Київ', 'Садова', 28),
+        ]
+
+        class Firm {
+            #firmName
+            #year
+            #mounth
+            constructor(firmName, year, mounth, productsList, servicesList, adressesList) {
+                this.FirmName = firmName
+                this.Year = year
+                this.Mounth = mounth
+                this.productsList = productsList
+                this.servicesList = servicesList
+                this.adressesList = adressesList
+            }
+            get FirmName() {
+                return this.#firmName
+            }
+            set FirmName(val) {
+                if (val.length === 0) throw new arror('Назва фірми не може бути порожньою')
+                this.#firmName = val
+            }
+            get Year() {
+                return this.#year
+            }
+            set Year(val) {
+                if (val < 1900 || val > 2024)
+                    throw new arror('Не коректне значення року')
+                this.#year = val
+            }
+            get Mounth() {
+                return this.#mounth
+            }
+            set Mounth(val) {
+                if (val < 1 || val > 12)
+                    throw new arror('Не коректне значення місяця')
+                this.#mounth = val
+            }
+            getYearsOfTheCompanyExistence(val = 2024) {
+                return val - this.Year
+            }
+            getBranchesInCity(val) {
+                let arrBranches = []
+                this.adressesList.filter(adress => {
+                    if (adress.City === val) arrBranches.push(adress)
+                    return arrBranches
+                }
+                )
+                return arrBranches
+            }
+            getServicesThatCanBeDoneInACertainTimeAndACertainAmountOfMoney(time, money) {
+                let arrServices = []
+                this.servicesList.filter(servise => {
+                    if (servise.Cost <= money && servise.DeadLine <= time)
+                        arrServices.push(servise.NameOfService)
+                    return arrServices
+                })
+                return arrServices
+            }
+            getProductsIsAvailable() {
+                let arrProducts = []
+                this.productsList.filter(product => {
+                    if (product.Sell_status === 'available')
+                        arrProducts.push(product)
+                    return arrProducts
+                })
+                return arrProducts
+            }
+            toString() {
+                return `Фірма: "${this.FirmName}"<br>Дата створення:<br> ${this.Mounth}.${this.Year}<br>Товари які доступні:<br> ${this.getProductsIsAvailable()}<br>
+                Послуги:<br> ${this.servicesList}<br>Адреси філіалів:<br> ${this.adressesList}`
+            }
+        }
+
+        let firm = new Firm('Сервісний центр "Гаджет"', 2020, 6, productsList, servicesList, adressesList)
+
+        document.write(`${firm}<br>`)
+
+        document.write(`Кількість років існування фірми: ${firm.getYearsOfTheCompanyExistence()}<br>`)
+
+        document.write(`Філіали фірми у місті Київ:<br>${firm.getBranchesInCity('Київ')}<br>`)
+
+        document.write(`Послуги, що можуть бути виконані за 2 дні і за 2000грн:<br>
+        ${firm.getServicesThatCanBeDoneInACertainTimeAndACertainAmountOfMoney(2, 2000)}`)
+
+    </script>
+</body>
+
+</html>

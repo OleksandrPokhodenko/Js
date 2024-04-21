@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 2</h1>
+    <p>Створити клас TMoney для роботи з грошовими сумами. Сума повинна зберігатися у вигляді доларового еквіваленту.
+        Реалізувати методи додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та визначення курсу
+        долара, при якому сума у гривнях збільшиться на 100. Курс долара зберігати в окремому полі.</p>
+    <script>
+
+        class TMoney {
+            #sumMoney
+            #dollarRate
+            constructor(sumMoneyInDollar) {
+                this.SumMoney = sumMoneyInDollar
+                this.dollarRate = 39.2
+            }
+            get SumMoney() {
+                return this.#sumMoney
+            }
+            set SumMoney(val) {
+                if (val < 0)
+                    throw new arror('Не коректне значення')
+                this.#sumMoney = val
+            }
+            get DollarRate() {
+                return this.#dollarRate
+            }
+            increaseSum(valueInHryvnia) {
+                return valueInHryvnia + (this.SumMoney * this.dollarRate)
+            }
+            reduceSum(valueInHryvnia) {
+                return (this.SumMoney * this.dollarRate) - valueInHryvnia
+            }
+            increaseInTheAmountBy100UAH() {
+                return (this.SumMoney * this.dollarRate + 100) / (this.SumMoney * this.dollarRate) * this.dollarRate
+            }
+            toString() {
+                return `Попередня cума на рахунку: ${this.SumMoney}$<br>`
+            }
+        }
+
+        let money = new TMoney(1000);
+
+        document.write(`${money}`);
+
+        let sumIncrease = money.increaseSum(1000);
+
+        document.write(`Нова сума на рахунку: ${sumIncrease}грн<br>`);
+
+        let sumReduce = money.reduceSum(10000);
+
+        document.write(`Нова сума на рахунку: ${sumReduce}грн<br>`);
+
+        document.write(`Курс долара при якому сума збільшиться на 100 грн: ${money.increaseInTheAmountBy100UAH().toFixed(2)}`);
+
+
+    </script>
+</body>
+
+</html>
