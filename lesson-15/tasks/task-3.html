@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 2</h1>
+    <p>Створити об’єкт «Авто». </p>
+    <p>Поля(властивості)</p>
+    <ol>
+        <li>Марка</li>
+        <li>Розмір бака</li>
+        <li>Кількість наявних літрів</li>
+        <li>Кількість місць</li>
+        <li>Кількість пасажирів</li>
+    </ol>
+    <p>Методи (дії)</p>
+    <ol>
+        <li>Заправка на вказану кількість літрів</li>
+        <li>Виведення кількості пасажирів</li>
+        <li>Додавання пасажирів</li>
+        <li>Висадка пасажирів</li>
+    </ol>
+    <script>
+
+        let objAvto = {
+            carBrand: 'Nissan',
+            tankSize: 50,
+            numberOfLitresInTheTank: 20,
+            numberOfSeats: 5,
+            numberOfPassengers: 2,
+            refuelingTheTank: function (val) {
+                if (val <= 0) document.write(`Якщо хочете заправитись введіть інше значення<br>`)
+                else if ((val + this.numberOfLitresInTheTank) > this.tankSize)
+                    document.write(`${val}л не влізе<br>`)
+                else {
+                    this.numberOfLitresInTheTank += val
+                    document.write(`Дякуємо за заправку, нехай щастить<br>Зараз в баці: ${this.numberOfLitresInTheTank}л<br>`)
+                }
+                return this.numberOfLitresInTheTank
+            },
+            getNumberOfPassengers: function () {
+                document.write(`Зараз в машині пасажирів не враховуючи водія: ${this.numberOfPassengers}<br>`)
+            },
+            increaseNumberOfPassengers: function (val) {
+                if ((val + this.numberOfPassengers) > (this.numberOfSeats - 1))
+                    document.write(`${val} пасажирів забагато<br>`)
+                else if (val < 0) document.write('Введіть коректне значення пасажирів<br>')
+                else {
+                    this.numberOfPassengers += val
+                    document.write(`Зараз в машині пасажирів не враховуючи водія: ${this.numberOfPassengers}<br>`)
+                }
+                return this.numberOfPassengers
+            },
+            reduceNumberOfPassengers: function (val) {
+                if ((this.numberOfPassengers - val) < 0)
+                    document.write(`Стільки пасажирів в машині не має<br>`)
+                else if (val < 0) document.write('Введіть коректне значення пасажирів<br>')
+                else {
+                    this.numberOfPassengers -= val
+                    document.write(`Зараз в машині пасажирів не враховуючи водія: ${this.numberOfPassengers}<br>`)
+                }
+            },
+            toString: function () {
+                document.write(`Марка авто: ${this.carBrand}<br>Розмір бака авто: ${this.tankSize}л<br>
+                Кількість літрів в баці: ${this.numberOfLitresInTheTank}л<br>Кількість місць, враховуючи водія: ${this.numberOfSeats}<br>
+                Кількість пасажирів в машині не враховуючи водія: ${this.numberOfPassengers}<br>`)
+            },
+        }
+
+        let avto = objAvto
+        avto.toString()
+        avto.refuelingTheTank(20)
+        avto.getNumberOfPassengers()
+        avto.increaseNumberOfPassengers(1)
+        avto.reduceNumberOfPassengers(2)
+
+    </script>
+</body>
+
+</html>

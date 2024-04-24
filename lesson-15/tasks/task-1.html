@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 0</h1>
+    <p>Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція знаходження суми, а у
+        іншому – функція для знаходження добутку тих, які знаходяться між заданими мінімальним і максимальним значенням.
+    </p>
+    <p>Використати обидва методи стосовно обидвох об’єктів (використати call, apply)</p>
+
+    <script>
+
+        let objOne = {
+            arrayNumbers: [1, 3, 5, 7, 9, 11],
+            getSum: function () {
+                return this.arrayNumbers.reduce((prevSum, number) => prevSum + number)
+            }
+        }
+
+        let objTwo = {
+            arrayNumbers: [2, 4, 6, 8, 10, 12],
+            getProductInAGivenRange: function (min, max) {
+                let product = 1
+                for (let i = 0; i < this.arrayNumbers.length - 1; i++) {
+                    if (this.arrayNumbers[i] > min)
+                        product *= this.arrayNumbers[i]
+                    if (this.arrayNumbers[i + 1] >= max) break
+                }
+                return product
+            }
+        }
+
+        let sumObjOne = objOne.getSum()
+
+        document.write(`Сума чисел першого об'єкта: ${sumObjOne}<br>`)
+
+        let productObjTwo = objTwo.getProductInAGivenRange(3, 11)
+
+        document.write(`Добуток чисел другого об'єкта: ${productObjTwo}<br>`)
+
+        let sumObjTwo = objOne.getSum.call(objTwo)
+
+        document.write(`Сума чисел другого об'єкта: ${sumObjTwo}<br>`)
+
+        let productObjOne = objTwo.getProductInAGivenRange.apply(objOne, [4, 10])
+
+        document.write(`Добуток чисел першого об'єкта: ${productObjOne}<br>`)
+
+    </script>
+</body>
+
+</html>

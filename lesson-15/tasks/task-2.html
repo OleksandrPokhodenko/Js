@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 1</h1>
+    <p>Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.</p>
+    <p>Поля(властивості)</p>
+    <ol>
+        <li>Масив, у якому зберігається поле з зайцями</li>
+    </ol>
+    <p>Методи (дії)</p>
+    <ol>
+        <li>Метод пострілу (задається позиція пострілу)</li>
+        <li>Виведення ігрового поля</li>
+    </ol>
+    <script>
+
+        let objShootingRange = {
+            playingField: [],
+            numHare: 0,
+            fillingThePlayingField: function () {
+                alert('Гра: тир')
+                let cols = parseInt(prompt('Введіть кількість рядочків ігрового поля'))
+                let rows = parseInt(prompt('Введіть кількість стовпців ігрового поля'))
+                this.numHare = parseInt(prompt('Введіть кількість зайців'))
+                for (let row = 0; row < rows; row++) {
+                    let arr = new Array(cols).fill(0)
+                    this.playingField.push(arr)
+                }
+                for (let i = 0; i < this.numHare;) {
+                    let randCol = Math.floor(Math.random() * cols)
+                    let randRow = Math.floor(Math.random() * rows)
+                    if (this.playingField[randRow][randCol] === 0) {
+                        this.playingField[randRow][randCol] = 1
+                        i++
+                    }
+                }
+            },
+            getGame: function () {
+                this.fillingThePlayingField()
+                let numShoot = parseInt(prompt('Введіть кількість пострілів'))
+                while (numShoot > 0 && this.numHare > 0) {
+                    let colNum = parseInt(prompt('Введіть номер рядочка'))
+                    let rowNum = parseInt(prompt('Введіть номер стовпця'))
+                    if (this.playingField[colNum - 1][rowNum - 1] === 1) {
+                        this.playingField[colNum - 1][rowNum - 1] = 0
+                        alert('Попав')
+                        numShoot--
+                        this.numHare--
+                    }
+                    else {
+                        alert('Мимо')
+                        numShoot--
+                    }
+                }
+                if (this.numHare === 0)
+                    alert('Перемога')
+                else alert('Програш')
+            },
+            getPlayingField: function () {
+                for (let i = 0; i < this.playingField.length; i++) {
+                    for (let j = 0; j < this.playingField[i].length; j++) {
+                        document.write(`${this.playingField[i][j]} `)
+                    }
+                    document.write(`<br>`)
+                }
+            }
+        }
+
+        let game = objShootingRange.getGame()
+        let field = objShootingRange.getPlayingField()
+
+    </script>
+</body>
+
+</html>

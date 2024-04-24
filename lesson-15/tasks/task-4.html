@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Задача 3</h1>
+    <p>Розробити клас MultChecker для перевірки таблиці множення</p>
+    <p>Поля(властивості)</p>
+    <ol>
+        <li>Число, яке перевіряємо (наприклад, перевірка частини таблиці множення на 7)</li>
+        <li>Кількість правильних відповідей</li>
+        <li>Кількість неправильних відповідей</li>
+    </ol>
+    <p>Методи (дії)</p>
+    <ol>
+        <li>Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)</li>
+        <li>Перевірка правильності вказаної відповіді</li>
+        <li>render - виведення інформації про тестування на екран</li>
+    </ol>
+
+    <script>
+
+        class MultChecker {
+            constructor(num) {
+                this.num = num
+                this.trueCount = 0
+                this.falseCount = 0
+            }
+            game(val) {
+                alert(`Давайте перевіремо ваше знання таблиці множення на ${this.num}`)
+                for (let i = 0; i < val; i++) {
+                    let randomNum = 1 + Math.floor(Math.random() * 9)
+                    alert(`Скільки буде ${this.num} * ${randomNum} ?`)
+                    let userResult = parseInt(prompt('Введіть вашу відповідь'))
+                    let result = this.num * randomNum
+                    this.checkResult(userResult, result)
+                }
+            }
+            checkResult(userResult, result) {
+                if (userResult === result) {
+                    alert('Вірно')
+                    this.trueCount++
+                }
+                else {
+                    alert('Не вірно')
+                    this.falseCount++
+                }
+            }
+            render() {
+                document.write(`Результат перевірки:<br>Вірних відповідей: ${this.trueCount}<br>Не вірних відповідей: ${this.falseCount}`)
+            }
+        }
+
+        let game = new MultChecker(9)
+        game.game(5)
+        game.render()
+
+    </script>
+</body>
+
+</html>
