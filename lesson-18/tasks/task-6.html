@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 6</h1>
+    <p>Користувач задає кількість оцінок і натискає на кнопку «get table». В результаті формується таблиця з input, куди
+        користувач вводить оцінки. Після цього натискає на кнопку “get sum” і знаходить середнє значення.</p>
+    <script>
+
+        function priceNumber() {
+            let scoreNumbers = parseInt(document.getElementById('priceNumberInput').value)
+            for (let i = 0; i < scoreNumbers; i++) {
+                let inputTable = document.createElement('input')
+                inputTable.className = 'inputTable'
+                document.getElementById('divGetTable').append(inputTable)
+            }
+        }
+
+        function getAverageScore() {
+            let scoresList = document.getElementsByClassName('inputTable')
+            let sum = 0
+            for (let score of scoresList) {
+                sum += parseInt(score.value)
+            }
+            let averageScore = sum / scoresList.length
+            document.getElementById('divAverageScore').innerText = `Average score: ${averageScore}`
+        }
+
+        window.onload = function () {
+            document.getElementById('btnGetTable').onclick = priceNumber
+            document.getElementById('btnAverageScore').onclick = getAverageScore
+        }
+
+    </script>
+
+    <div>
+        <label>Price number
+            <input type="number" id="priceNumberInput">
+        </label>
+        <br>
+        <button id="btnGetTable">Get table</button>
+    </div>
+    <div id="divGetTable"></div>
+    <div>
+        <button id="btnAverageScore">Average score</button>
+        <div id="divAverageScore"></div>
+    </div>
+</body>
+
+</html>

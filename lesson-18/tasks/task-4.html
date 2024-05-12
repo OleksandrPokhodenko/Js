@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Задача 4</h1>
+    <p>Наперед задано у скрипті масив зі списком бажань. Після завантаження сторінки випадковим чином вибираються 3 і
+        відображаються у окремих div (їх треба створити і додати на сторінку)</p>
+
+    <script>
+
+        const wishlist = [
+            'Веселитись',
+            'Відпочивати',
+            'Подорожувати',
+            'Пізнавати світ',
+            'Займатись спортом',
+        ]
+        function myWishList(arr, text) {
+            let array = [...arr]
+            let title = document.createElement('h1')
+            title.innerText = text
+            let body = document.querySelector('body')
+            body.append(title)
+            for (let i = 0; i < 3; i++) {
+                let randomNum = Math.floor(Math.random() * array.length)
+                let newDiv = document.createElement('div')
+                newDiv.innerText = (array[randomNum])
+                body.append(newDiv)
+                array.splice(randomNum, 1)
+            }
+        }
+
+
+        window.onload = myWishList(wishlist, 'Список випадкових бажань:')
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Задача 1</h1>
+    <p>Розробити калькулятор</p>
+
+    <script>
+
+        function add(numberOne, numberTwo) {
+            return numberOne + numberTwo
+        }
+
+        function subtract(numberOne, numberTwo) {
+            return numberOne - numberTwo
+        }
+
+        function multiply(numberOne, numberTwo) {
+            return numberOne * numberTwo
+        }
+
+        function divide(numberOne, numberTwo) {
+            return numberOne / numberTwo
+        }
+
+        function calculator(method) {
+            const numberOne = parseInt(document.getElementById('firstNumber').value)
+            const numberTwo = parseInt(document.getElementById('secondNumber').value)
+            let result = method(numberOne, numberTwo)
+            document.getElementById('result').value = result
+        }
+
+        window.onload = function () {
+            let sum = document.getElementById('add')
+            sum.onclick = calculator.bind(null, add)
+            let subtraction = document.getElementById('subtract')
+            subtraction.onclick = calculator.bind(null, subtract)
+            let multiplication = document.getElementById('multiply')
+            multiplication.onclick = calculator.bind(null, multiply)
+            let dividing = document.getElementById('divide')
+            dividing.onclick = calculator.bind(null, divide)
+        }
+
+    </script>
+
+    <div>
+        <span>Перше число</span>
+        <input id="firstNumber" type="number">
+    </div>
+    <div>
+        <span>Друге число</span>
+        <input id="secondNumber" type="number">
+    </div>
+    <button id="add">Додати</button>
+    <button id="subtract">Відняти</button>
+    <button id="multiply">Помножити</button>
+    <button id="divide">Поділити</button>
+    <div>
+        <span>-----------------------------------------------------------</span>
+    </div>
+    <div>
+        <span>Результат</span>
+        <input id="result" type="number">
+    </div>
+</body>
+
+</html>

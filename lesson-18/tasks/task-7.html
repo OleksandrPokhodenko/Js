@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 3</h1>
+    <p>Подорож складається з 3 етапів. На кожному етапі користувач може вибрати один з видів транспорту (авто, автобус,
+        літак - випадаючий список), харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х гідів(використати -
+        radio buttons). Ціни визначте самі. Підрахувати загальну вартість.</p>
+    <script>
+
+        function Price() {
+            let transportPricesList = document.querySelectorAll('select')
+            let transportPrice = 0
+            for (let price of transportPricesList) {
+                transportPrice += parseInt(price.value)
+            }
+
+            let inputList = document.getElementsByTagName('input')
+            let priceOfFoodAndGuide = 0
+            for (let input of inputList) {
+                if (input.checked) priceOfFoodAndGuide += parseInt(input.value)
+            }
+
+            let totalPrice = transportPrice + priceOfFoodAndGuide
+
+            document.getElementById('myDiv').innerText = `Сума вибраної подорожі: ${totalPrice} грн`
+        }
+
+        window.onload = function () {
+            let button = document.getElementById('myButton')
+            button.onclick = Price
+        }
+
+    </script>
+
+    <h1>Подорож</h1>
+    <h2>Перший етап</h2>
+    <form action="#">
+        Оберіть транспорт
+        <select type="select">
+            <option value="1000">Автомобіль</option>
+            <option value="500">Автобус</option>
+            <option value="3000">Літак</option>
+        </select>
+    </form>
+    <form action="#" id="myFood">
+        Оберіть тип харчування<br>
+        <label>
+            <input type="checkbox" value="100" />
+            сніданок
+        </label><br>
+        <label>
+            <input type="checkbox" value="200" />
+            обід
+        </label><br>
+        <label>
+            <input type="checkbox" value="150" />
+            вечеря
+        </label><br>
+    </form>
+    <form action="#" id="myGuide">
+        Оберіть гіда<br>
+        <label>
+            <input type="radio" name="guide" value="1000" />
+            Петренко Іван
+        </label><br>
+        <label>
+            <input type="radio" name="guide" value="1200" />
+            Сідоренко Євген
+        </label><br>
+        <label>
+            <input type="radio" name="guide" value="1500" />
+            Клименко Юлія
+        </label><br>
+    </form>
+    <br>
+    <h2>Другий етап</h2>
+    <form action="#">
+        Оберіть транспорт
+        <select type="select">
+            <option value="1000">Автомобіль</option>
+            <option value="500">Автобус</option>
+            <option value="3000">Літак</option>
+        </select>
+    </form>
+    <form action="#" id="myFood">
+        Оберіть тип харчування<br>
+        <label>
+            <input type="checkbox" value="100" />
+            сніданок
+        </label><br>
+        <label>
+            <input type="checkbox" value="200" />
+            обід
+        </label><br>
+        <label>
+            <input type="checkbox" value="150" />
+            вечеря
+        </label><br>
+    </form>
+    <form action="#" id="myGuide">
+        Оберіть гіда<br>
+        <label>
+            <input type="radio" name="guide" value="1000" />
+            Петренко Іван
+        </label><br>
+        <label>
+            <input type="radio" name="guide" value="1200" />
+            Сідоренко Євген
+        </label><br>
+        <label>
+            <input type="radio" name="guide" value="1500" />
+            Клименко Юлія
+        </label><br>
+    </form>
+    <br>
+    <h2>Третій етап</h2>
+    <form action="#">
+        Оберіть транспорт
+        <select type="select">
+            <option value="1000">Автомобіль</option>
+            <option value="500">Автобус</option>
+            <option value="3000">Літак</option>
+        </select>
+    </form>
+    <form action="#" id="myFood">
+        Оберіть тип харчування<br>
+        <label>
+            <input type="checkbox" value="100" />
+            сніданок
+        </label><br>
+        <label>
+            <input type="checkbox" value="200" />
+            обід
+        </label><br>
+        <label>
+            <input type="checkbox" value="150" />
+            вечеря
+        </label><br>
+    </form>
+    <form action="#" id="myGuide">
+        Оберіть гіда<br>
+        <label>
+            <input type="radio" name="guide" value="1000" />
+            Петренко Іван
+        </label><br>
+        <label>
+            <input type="radio" name="guide" value="1200" />
+            Сідоренко Євген
+        </label><br>
+        <label>
+            <input type="radio" name="guide" value="1500" />
+            Клименко Юлія
+        </label><br>
+    </form>
+    <br>
+    <button id="myButton">Загальна сума</button>
+    <div id="myDiv"></div>
+
+</body>
+
+</html>

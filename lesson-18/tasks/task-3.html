@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 3</h1>
+    <p>Користувач задає рік народження. Визначити кількість років користувача.</p>
+    <script>
+
+        function numberOfYears() {
+            const yearOfBirth = parseInt(document.getElementById('yearOfBirth').value)
+            const numberOfYears = 2024 - yearOfBirth
+            document.getElementById('numberOfYears').value = numberOfYears
+        }
+
+        window.onload = function () {
+            const result = document.getElementById('btn')
+            result.onclick = numberOfYears
+        }
+
+    </script>
+
+    <div>
+        <span>Введіть свій рік народження</span>
+        <input id="yearOfBirth" type="value">
+    </div>
+    <div>
+        <button id="btn">Розрахувати кількість років</button>
+        <input id="numberOfYears" type="number">
+    </div>
+
+</body>
+
+</html>
