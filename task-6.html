@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            display: flex;
+            gap: 10px;
+        }
+
+        h2 {
+            position: absolute;
+            top: -5px;
+        }
+
+        .container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            padding: 40px 5px 5px 5px;
+            border: 2px solid #000;
+            width: 210px;
+            height: 250px;
+        }
+
+        .myDivSportsman {
+            border: 2px solid #000;
+            width: 200px;
+            margin: 0 auto;
+            padding: 2px;
+            position: relative;
+        }
+
+        .myDivSportsman::after {
+            content: '\2192';
+            position: absolute;
+            color: green;
+            right: 5px;
+            font-size: 24px;
+            bottom: -2px;
+        }
+
+        .myDivCandidat {
+            border: 2px solid #000;
+            width: 200px;
+            margin: 0 auto;
+            padding: 2px;
+            position: relative;
+        }
+
+        .myDivCandidat::after {
+            content: '\2190';
+            position: absolute;
+            color: red;
+            right: 5px;
+            font-size: 24px;
+            bottom: -2px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Задача 6</h1>
+    <p>Дано список спортсменів. Потрібно сформувати список тих, які будуть брати участь у змаганні. При цьому є два
+        стовпці. В одному відображені всі спортсмени, в іншому – список тих, хто був вибраний. При натисканні на зелену
+        стрілку спортсмен переміщається у список для змагань. При натисканні на червону стрілку спортсмен переміщається
+        у загальний список.</p>
+    <script>
+
+        const sportsmansAndCandidatesList = ['John Depp', 'Sara Vik', 'Den Miro', 'Alan Woo', 'Olga Cich', 'Ivan Hai']
+
+        function sportsmansAndCandidates(array) {
+            const mySection = document.createElement('section')
+            const myDivSportsmans = document.createElement('div')
+            const myTitleSportsmans = document.createElement('h2')
+            myTitleSportsmans.innerText = 'Sportsmans'
+            myDivSportsmans.append(myTitleSportsmans)
+            myDivSportsmans.className = 'container'
+            const myDivCandidates = document.createElement('div')
+            const myTitleCandidates = document.createElement('h2')
+            myTitleCandidates.innerText = 'Candidates'
+            myDivCandidates.append(myTitleCandidates)
+            myDivCandidates.className = 'container'
+            myDivSportsmans.id = 'sportsmans'
+            myDivCandidates.id = 'candidates'
+            for (let i = 0; i < array.length; i++) {
+                myDivSportsman = document.createElement('div')
+                myDivSportsman.className = 'myDivSportsman'
+                myDivSportsman.innerText = array[i]
+                myDivSportsmans.append(myDivSportsman)
+                myDivSportsman.onclick = (event) => {
+                    const element = event.target
+                    if (element.closest('#sportsmans')) {
+                        candidates.append(element)
+                        element.className = 'myDivCandidat'
+                    }
+                    else if (element.closest('#candidates')) {
+                        myDivSportsmans.append(element)
+                        element.className = 'myDivSportsman'
+                    }
+                }
+            }
+            mySection.append(myDivSportsmans)
+            mySection.append(myDivCandidates)
+            return mySection
+        }
+
+        document.body.append(sportsmansAndCandidates([...sportsmansAndCandidatesList]))
+
+    </script>
+</body>
+
+</html>
