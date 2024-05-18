@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            display: flex;
+            gap: 10px;
+        }
+
+        img {
+            width: 200px;
+        }
+
+        .border {
+            border: 3px solid green;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Задача 5</h1>
+    <p>Відображаємо картки товарів, які користувач може вибирати. Вибраний товар має зелену рамку (при кліку робити
+        toogle з класом вибраного елемента)</p>
+    <script>
+
+        const imgList = [
+            {
+                src: '../img/1.jpg',
+                class: 'img1'
+            },
+            {
+                src: '../img/2.jpg',
+                class: 'img2'
+            },
+            {
+                src: '../img/3.jpg',
+                class: 'img3'
+            },
+        ]
+
+        function сhoosingAProductCard(array) {
+            const myDiv = document.createElement('div')
+            for (let i = 0; i < array.length; i++) {
+                const myImg = document.createElement('img')
+                myImg.src = array[i].src
+                myImg.className = array[i].class
+                myImg.onclick = () => myImg.classList.toggle('border')
+                myDiv.append(myImg)
+            }
+            return myDiv
+        }
+
+        document.body.append(сhoosingAProductCard([...imgList]))
+
+    </script>
+</body>
+
+</html>

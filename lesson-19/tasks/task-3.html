@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 3</h1>
+    <p>Дано 5 випадковим чином згенерованих нумерованих списків з рандомними числами (кількість елементів у списку
+        випадкова від 1 до 10, елементи випадкові – від 1 до 100). При натисненні на кнопку нумеровані списки з парною
+        кількістю елементів зафарбувати у зелений колір, інші у червоний.</p>
+    <script>
+
+        function randomNum(minNum, maxNum) {
+            const randomNum = minNum + Math.floor(Math.random() * maxNum + minNum - 1)
+            return randomNum
+        }
+
+        function getUlList(ulNum, liNumMin, liNumMax, minValue, maxValue) {
+            const myDiv = document.createElement('div')
+            for (let i = 0; i < ulNum; i++) {
+                let myOl = document.createElement('ol')
+                let randNumLi = randomNum(liNumMin, liNumMax)
+                for (let j = 0; j < randNumLi; j++) {
+                    let myLi = document.createElement('li')
+                    let randValue = randomNum(minValue, maxValue)
+                    myLi.innerText = randValue
+                    myOl.append(myLi)
+                }
+                myDiv.append(myOl)
+            }
+            return myDiv
+        }
+
+        const myList = getUlList(5, 1, 10, 1, 100)
+        document.body.append(myList)
+        let myBtn = document.createElement('button')
+        myBtn.innerText = 'button'
+        document.body.append(myBtn)
+
+        function myListChangeColor() {
+            let listOl = document.querySelectorAll('ol')
+            for (let ol of listOl) {
+                if (ol.childElementCount % 2 === 0) ol.style.backgroundColor = 'green'
+                else ol.style.backgroundColor = 'red'
+            }
+        }
+
+        myBtn.onclick = myListChangeColor
+
+    </script>
+
+</body>
+
+</html>

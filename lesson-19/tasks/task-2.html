@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Задача 2</h1>
+    <p>Дано 5 елементів input. При введенні значення у якийсь із них необхідно автоматично заповнювати інші , усі
+        попередні у спадному порядку(кожен попередній має значення на 1 менше за наступний), усі наступні на 1 більше
+        (кожен наступне на 1 більше за попереднього)</p>
+    <div>
+        <label>
+            Value 1
+            <input type="number" value="">
+        </label>
+        <label>
+            Value 2
+            <input type="number" value="">
+        </label>
+        <label>
+            Value 3
+            <input type="number" value="">
+        </label>
+        <label>
+            Value 4
+            <input type="number" value="">
+        </label>
+        <label>
+            Value 5
+            <input type="number" value="">
+        </label>
+    </div>
+    <script>
+
+        function changeOfValue(event) {
+            let myInput = event.target
+            let myLabel = myInput.parentElement
+            let num = parseInt(myInput.value)
+            let previousInput = myInput
+            while (myLabel.previousElementSibling !== null) {
+                myLabel = myLabel.previousElementSibling
+                previousInput = myLabel.firstElementChild
+                previousInput.value = --num
+                myLabel = previousInput.parentElement
+            }
+            let nextInput = myInput
+            while (myLabel.nextElementSibling !== null) {
+                myLabel = myLabel.nextElementSibling
+                myInput = myLabel.firstElementChild
+                myInput.value = ++num
+                myLabel = myInput.parentElement
+            }
+        }
+
+        let myInputList = document.querySelectorAll('input')
+        for (let myInput of myInputList) {
+            myInput.addEventListener('input', changeOfValue)
+        }
+
+    </script>
+</body>
+
+</html>

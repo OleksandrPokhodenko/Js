@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            display: flex;
+        }
+
+        div {
+            padding: 10px;
+        }
+
+        table {
+            border: 2px solid #000;
+        }
+
+        td {
+            border: 2px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Задача 4</h1>
+    <p>Дано 3 таблиці розмірності 3*3 з випадковими числами. Якщо відбувається клік на якійсь із клітинок, то до
+        відповідної таблиці додається червона рамка (спробуйте додати можливість відображення кількості кліків біля
+        назви таблиці з використанням відповідно доданого для цього атрибута).</p>
+
+    <script>
+
+        let count = [0, 0, 0]
+
+        function randomNum(minNum, maxNum) {
+            const randomNum = minNum + Math.floor(Math.random() * maxNum - minNum + 1)
+            return randomNum
+        }
+
+        function changeBorderColor(event) {
+            const thisTd = event.target
+            if (event.target.tagName === 'TD')
+                thisTd.closest('table').style.cssText = 'border: 2px solid red'
+        }
+
+        function getTable(rows, cols, minNum, maxNum, tableNum, arrCount) {
+            const mySection = document.createElement('section')
+            for (let i = 0; i < tableNum; i++) {
+                const myDiv = document.createElement('div')
+                const myTable = document.createElement('table')
+                for (let row = 0; row < rows; row++) {
+                    const myRow = document.createElement('tr')
+                    for (let col = 0; col < cols; col++) {
+                        const myCol = document.createElement('td')
+                        const randomNumber = randomNum(minNum, maxNum)
+                        myCol.innerText = randomNumber
+                        myRow.append(myCol)
+                    }
+                    myTable.append(myRow)
+                }
+                const mySpan = document.createElement('span')
+                myDiv.append(myTable)
+                myDiv.addEventListener('click', changeBorderColor)
+                myDiv.addEventListener('click', (event, arrCount) => {
+                    if (event.target.tagName === 'TD') {
+                        count[i]++
+                        return mySpan.innerText = `Counter: ${count[i]}`
+                    }
+                })
+                myDiv.append(mySpan)
+                mySection.append(myDiv)
+            }
+            return mySection
+        }
+
+        document.body.append(getTable(3, 3, 1, 10, 3, [...count]))
+
+
+    </script>
+</body>
+
+</html>
