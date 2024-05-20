@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 6</h1>
+    <p>Вивести скільки зараз годин у Лондоні, Парижі, Сіднеї.</p>
+    <script>
+
+        const now = new Date()
+
+        const LondonTime = now.toLocaleTimeString('en-GB', { timeZone: 'Europe/London' })
+        const ParisTime = now.toLocaleTimeString('en-FR', { timeZone: 'Europe/Paris' })
+        const SydneyTime = now.toLocaleTimeString('en-AU', { timeZone: 'Australia/Sydney' })
+
+        document.write(`Час у Лондоні: ${LondonTime}<br>`)
+        document.write(`Час у Парижі: ${ParisTime}<br>`)
+        document.write(`Час у Сіднеї: ${SydneyTime}<br>`)
+
+    </script>
+</body>
+
+</html>

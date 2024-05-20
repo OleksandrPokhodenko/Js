@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Задача 10</h1>
+    <p>Дано дата виробництва йогурта (вводимо рік, місяць, день) та кількість днів придатності. Визначити чи є він
+        придатним на даний момент.</p>
+    <script>
+
+        const yearOfManufacture = prompt('Введіть рік виготовлення')
+        const monthOfManufacture = parseInt(prompt('Введіть місяць виготовлення цифрами'))
+        const dayOfManufacture = parseInt(prompt('Введіть день виготовлення'))
+        const expiryDays = parseInt(prompt('Введіть кількість днів придатності'))
+
+        const monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+        const userMonthManufacture = monthList[monthOfManufacture - 1]
+
+        const now = new Date().getTime()
+
+        const manufacture = Date.parse(`${dayOfManufacture}, ${userMonthManufacture}, ${yearOfManufacture}`)
+
+        const expiryDate = Date.parse(`${(dayOfManufacture + expiryDays)}, ${userMonthManufacture}, ${yearOfManufacture}`)
+
+        if (now > manufacture && now < expiryDate) document.write('Йогурт придатний до вживання')
+        else if (now < manufacture) document.write('Не коректтна дата виготовлення')
+        else document.write('Йогурт не придатний до вживання')
+
+        console.log(now);
+        console.log(manufacture);
+        console.log(expiryDate);
+
+    </script>
+</body>
+
+</html>
